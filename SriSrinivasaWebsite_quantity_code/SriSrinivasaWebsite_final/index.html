@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Sri Srinivasa Live Pindi Rubbulu — Fresh Dosa, Idly, Vada, Pesara Pindi and homemade pickles. Order via WhatsApp in Gajuwaka." />
+<title>Sri Srinivasa Live Pindi Rubbulu</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#fff8ef;color:#180b03}
+.container{width:88%;max-width:1250px;margin:auto}
+nav{position:sticky;top:0;z-index:99;background:#250b03;color:#fff;padding:12px 0;box-shadow:0 4px 18px #0004}
+.navbox{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo h2{color:#ffc107;font-size:28px}
+.logo p{font-weight:700;font-size:14px}
+.navlinks{display:flex;align-items:center;flex-wrap:wrap;gap:8px 28px}
+nav a{color:#fff;text-decoration:none;font-weight:700}
+nav a:hover,nav a:focus-visible{text-decoration:underline;outline:2px solid #ffc107;outline-offset:3px}
+.call{background:#087a20;padding:12px 18px;border-radius:9px;white-space:nowrap}
+.call:hover{background:#066018}
+.menu-toggle{display:none;background:transparent;border:2px solid #ffc107;color:#ffc107;font-size:22px;padding:6px 12px;border-radius:8px;cursor:pointer}
+.hero{height:420px;background:linear-gradient(#0008,#0008),url('https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=1600') center/cover;color:#fff;display:flex;align-items:center;text-align:center}
+.hero h1{font-size:46px;color:#ffc107;line-height:1.2}
+.hero p{font-size:21px;margin:12px}
+.btn{border:0;background:#f57c00;color:#fff;padding:13px 28px;border-radius:28px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover,.btn:focus-visible{background:#d96a00;outline:2px solid #fff;outline-offset:2px}
+section{padding:32px 0}
+.title{text-align:center;color:#c43b09;font-size:30px;margin-bottom:8px}
+.subtitle{text-align:center;margin-bottom:25px;font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 25px #0002;border:1px solid #f1dfc5}
+.card img{width:100%;height:150px;object-fit:cover}
+.cardbody{padding:15px}
+.card h3{color:#a92b00;font-size:20px}
+.price{font-size:22px;color:#087a20;font-weight:900;margin:8px 0}
+.qty{display:flex;align-items:center;gap:12px;margin:10px 0}
+.qty button{width:28px;height:28px;border:0;border-radius:50%;background:#ff8500;color:#fff;font-weight:900;cursor:pointer;font-size:16px;line-height:1}
+.qty button:hover,.qty button:focus-visible{background:#e07500;outline:2px solid #250b03;outline-offset:2px}
+.qty span{font-weight:900;min-width:20px;text-align:center}
+.add{width:100%;background:#28aF45;border:0;color:white;padding:11px;border-radius:10px;font-weight:900;cursor:pointer}
+.add:hover,.add:focus-visible{background:#16852f;outline:2px solid #250b03;outline-offset:2px}
+#pickles{padding:40px 0}
+#pickles .subtitle{font-size:18px;margin-bottom:28px}
+.pickles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.pickle{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 25px #0002;border:2px solid #f1dfc5;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
+.pickle.selected{border-color:#21b34b;background:#f8fff9}
+.pickle-img{width:100%;height:150px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid #f1dfc5}
+.pickle img{width:100%;height:100%;object-fit:contain;display:block;padding:8px}
+.picklebody{padding:14px 15px 16px}
+.pickle h4{color:#a92b00;font-size:18px;font-weight:800;line-height:1.3;margin-bottom:4px}
+.pickle .pickle-weight{font-size:15px;color:#087a20;font-weight:800;margin-bottom:10px}
+.pickle .qty{margin:8px 0;justify-content:center}
+.pickle .add-pickle{width:100%;background:#28aF45;border:0;color:#fff;padding:11px;border-radius:10px;font-weight:900;cursor:pointer;font-size:14px}
+.pickle .add-pickle:hover,.pickle .add-pickle:focus-visible{background:#16852f;outline:2px solid #250b03;outline-offset:2px}
+.orderbox{margin-top:25px;background:#fff3d9;border:1px solid #ffd083;border-radius:14px;padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:15px;align-items:start}
+.cart{background:white;border-radius:12px;padding:15px}
+.cart h3{color:#c43b09;margin-bottom:10px}
+.cartline{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed #ddd;padding:8px 0}
+.total{font-size:22px;font-weight:900;color:#087a20;text-align:right;margin-top:10px}
+.form input,.form textarea{width:100%;padding:12px;margin-bottom:10px;border:1px solid #ddd;border-radius:8px;font-size:16px}
+.form input:focus,.form textarea:focus{border-color:#f57c00;outline:none;box-shadow:0 0 0 2px #f57c0044}
+.form input.invalid{border-color:#c43b09}
+.form textarea{height:78px;resize:vertical}
+.form button{width:100%;background:#25d366;color:#fff;border:0;padding:13px;border-radius:10px;font-weight:900;font-size:17px;cursor:pointer}
+.form button:hover,.form button:focus-visible{background:#1da851;outline:2px solid #250b03;outline-offset:2px}
+.form .hint{font-size:12px;color:#666;margin:-6px 0 10px}
+.float{position:fixed;right:20px;bottom:20px;background:#25d366;color:#fff;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:27px;box-shadow:0 8px 20px #0003;z-index:50}
+.float:hover,.float:focus-visible{background:#1da851;outline:2px solid #fff;outline-offset:2px}
+footer{background:#1b0802;color:#fff;text-align:center;padding:25px;margin-top:30px}
+footer a{color:#ffc107}
+@media(max-width:800px){
+  .hero h1{font-size:30px}
+  .hero{height:330px}
+  .menu-toggle{display:block}
+  .navlinks{display:none;flex-direction:column;align-items:stretch;width:100%;padding-top:12px}
+  .navlinks.open{display:flex}
+  .navlinks a{padding:8px 0}
+  .orderbox{grid-template-columns:1fr}
+  .container{width:94%}
+  .pickle-img{height:130px}
+  .pickle h4{font-size:16px}
+}
+@media(max-width:520px){
+  .pickles{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+  .pickle-img{height:110px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container navbox">
+    <div class="logo">
+      <h2>Sri Srinivasa</h2>
+      <p>Live Pindi Rubbulu</p>
+    </div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">☰</button>
+    <div class="navlinks" id="navMenu">
+      <a href="#menu">Menu</a>
+      <a href="#pickles">Pickles</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
+      <a class="call" href="tel:8179309006">☎ 8179309006</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>SRI SRINIVASA LIVE PINDI RUBBULU</h1>
+    <p>Fresh Dosa, Idly, Vada &amp; Pesara Pindi Available</p>
+    <p><b>Owner:</b> <span style="color:#ffc107">Uday Dhanala</span></p>
+    <a class="btn" href="tel:8179309006">Call Now: 8179309006</a>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="container">
+    <h2 class="title">Our Fresh Menu</h2>
+    <p class="subtitle">Select quantity using + and −</p>
+    <div class="grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<section id="pickles">
+  <div class="container">
+    <h2 class="title">Pickles Available</h2>
+    <p class="subtitle">Any Veg Pickle 250 Grams = <b style="color:#087a20">₹60</b></p>
+    <div class="pickles" id="pickleGrid"></div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="container">
+    <div class="orderbox">
+      <div class="cart">
+        <h3>Your Order</h3>
+        <div id="cartItems">No items selected</div>
+        <div class="total" id="total">Total: ₹0</div>
+      </div>
+      <form class="form" id="orderForm" onsubmit="sendWhatsApp(event)">
+        <input id="custName" type="text" placeholder="Your Name" required autocomplete="name" />
+        <input id="custPhone" type="tel" placeholder="Your Phone Number" required pattern="[6-9][0-9]{9}" inputmode="numeric" autocomplete="tel" />
+        <p class="hint">Enter 10-digit mobile number</p>
+        <textarea id="custAddress" placeholder="Your Location / Address" required></textarea>
+        <button type="submit">Order on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <p><b>Sri Srinivasa Live Pindi Rubbulu</b></p>
+  <p>High School Road, Beside MeeSeva, Gajuwaka</p>
+  <p>Phone: <a href="tel:8179309006">8179309006</a> | Email: <a href="mailto:udaydhanala30@gmail.com">udaydhanala30@gmail.com</a></p>
+</footer>
+
+<a class="float" href="https://wa.me/918179309006" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">💬</a>
+
+<script>
+const menuItems = [
+  { name: 'Dosa Rubbu', price: 50, img: 'images/menu/dosa.jpg' },
+  { name: 'Dosa Rubbu Small', price: 30, img: 'images/menu/dosa.jpg' },
+  { name: 'Idly Rubbu', price: 50, img: 'images/menu/idly.jpg' },
+  { name: 'Idly Rubbu Small', price: 30, img: 'images/menu/idly.jpg' },
+  { name: 'Vada Pindi', price: 120, img: 'images/menu/vada-pindi.jpg' },
+  { name: 'Vada Pindi Small', price: 70, img: 'images/menu/vada-pindi.jpg' },
+  { name: 'Pesara Pindi', price: 120, img: 'images/menu/pesara-pindi.jpg' },
+  { name: 'Pesara Pindi Small', price: 70, img: 'images/menu/pesara-pindi.jpg' }
+];
+
+const pickles = [
+  { name: 'Tomato Pickle 250g', price: 60, img: 'images/pickles/tomato.jpg' },
+  { name: 'Mango Pickle 250g', price: 60, img: 'images/pickles/mamidi.jpg' },
+  { name: 'Pandu Mirchi Pickle 250g', price: 60, img: 'images/pickles/mirchi.jpg' },
+  { name: 'Allam Pickle 250g', price: 60, img: 'images/pickles/allam.jpg' },
+  { name: 'Chintakaya Pickle 250g', price: 60, img: 'images/pickles/chintakaya.jpg' },
+  { name: 'Amla Pickle 250g', price: 60, img: 'images/pickles/usiri.jpg' },
+  { name: 'Lemon Pickle 250g', price: 60, img: 'images/pickles/nimma.jpg' },
+  { name: 'Kothemeera Pickle 250g', price: 60, img: 'images/pickles/kothemeera.jpg' },
+  { name: 'Podina Pickle 250g', price: 60, img: 'images/pickles/podina.jpg' },
+  { name: 'Gongura Pickle 250g', price: 60, img: 'images/pickles/gongura.jpg' },
+  { name: 'Velluli Pickle 250g', price: 60, img: 'images/pickles/velluli.jpg' }
+];
+
+const cart = {};
+const WHATSAPP_NUMBER = '918179309006';
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function addQty(name, price, change) {
+  if (!cart[name]) cart[name] = { price, qty: 0 };
+  cart[name].qty = Math.max(0, cart[name].qty + change);
+  renderAll();
+}
+
+function getCartTotal() {
+  return Object.values(cart).reduce((sum, item) => sum + item.price * item.qty, 0);
+}
+
+function renderAll() {
+  document.querySelectorAll('[data-q]').forEach(el => {
+    el.textContent = cart[el.dataset.q]?.qty || 0;
+  });
+
+  document.querySelectorAll('[data-pickle]').forEach(el => {
+    const qty = cart[el.dataset.pickle]?.qty || 0;
+    el.classList.toggle('selected', qty > 0);
+  });
+
+  let html = '';
+  let total = 0;
+  for (const [name, item] of Object.entries(cart)) {
+    if (item.qty > 0) {
+      const sub = item.price * item.qty;
+      total += sub;
+      html += `<div class="cartline"><span>${escapeHtml(name)} × ${item.qty}</span><b>₹${sub}</b></div>`;
+    }
+  }
+
+  document.getElementById('cartItems').innerHTML = html || 'No items selected';
+  document.getElementById('total').textContent = 'Total: ₹' + total;
+}
+
+function renderMenu() {
+  document.getElementById('menuGrid').innerHTML = menuItems.map(item => `
+    <div class="card">
+      <img src="${item.img}" alt="${escapeHtml(item.name)}" loading="lazy" width="400" height="150" />
+      <div class="cardbody">
+        <h3>${escapeHtml(item.name)}</h3>
+        <p>Fresh and tasty homemade quality.</p>
+        <div class="price">₹${item.price}</div>
+        <div class="qty">
+          <button type="button" aria-label="Decrease ${escapeHtml(item.name)}" data-action="minus" data-name="${escapeHtml(item.name)}" data-price="${item.price}">−</button>
+          <span data-q="${escapeHtml(item.name)}">0</span>
+          <button type="button" aria-label="Increase ${escapeHtml(item.name)}" data-action="plus" data-name="${escapeHtml(item.name)}" data-price="${item.price}">+</button>
+        </div>
+        <button type="button" class="add" data-action="plus" data-name="${escapeHtml(item.name)}" data-price="${item.price}">Add to Order</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPickles() {
+  document.getElementById('pickleGrid').innerHTML = pickles.map(item => `
+    <div class="pickle" data-pickle="${escapeHtml(item.name)}" data-name="${escapeHtml(item.name)}" data-price="${item.price}">
+      <div class="pickle-img">
+        <img src="${item.img}" alt="${escapeHtml(item.name)}" loading="lazy" width="280" height="150" />
+      </div>
+      <div class="picklebody">
+        <h4>${escapeHtml(item.name.replace(' 250g', ''))}</h4>
+        <p class="pickle-weight">250g — ₹${item.price}</p>
+        <div class="qty">
+          <button type="button" aria-label="Decrease ${escapeHtml(item.name)}" data-action="minus" data-name="${escapeHtml(item.name)}" data-price="${item.price}">−</button>
+          <span data-q="${escapeHtml(item.name)}">0</span>
+          <button type="button" aria-label="Increase ${escapeHtml(item.name)}" data-action="plus" data-name="${escapeHtml(item.name)}" data-price="${item.price}">+</button>
+        </div>
+        <button type="button" class="add-pickle" data-action="plus" data-name="${escapeHtml(item.name)}" data-price="${item.price}">Add to Order</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function sendWhatsApp(event) {
+  event.preventDefault();
+
+  const lines = [];
+  let total = 0;
+  for (const [name, item] of Object.entries(cart)) {
+    if (item.qty > 0) {
+      const sub = item.price * item.qty;
+      total += sub;
+      lines.push(`${name} x ${item.qty} = ₹${sub}`);
+    }
+  }
+
+  if (!lines.length) {
+    alert('Please select at least one item.');
+    document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const addr = document.getElementById('custAddress').value.trim();
+
+  const msg = [
+    'Hello Sri Srinivasa Live Pindi Rubbulu,',
+    '',
+    'I want to order:',
+    ...lines,
+    '',
+    `Total: ₹${total}`,
+    '',
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+    `Location: ${addr}`,
+    '',
+    'Please confirm my order.'
+  ].join('\n');
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-action]');
+  if (btn) {
+    const change = btn.dataset.action === 'plus' ? 1 : -1;
+    addQty(btn.dataset.name, Number(btn.dataset.price), change);
+    return;
+  }
+  const card = e.target.closest('.pickle[data-name]');
+  if (card && !e.target.closest('.qty') && !e.target.closest('.add-pickle')) {
+    addQty(card.dataset.name, Number(card.dataset.price), 1);
+  }
+});
+
+document.querySelector('.menu-toggle').addEventListener('click', function () {
+  const nav = document.getElementById('navMenu');
+  const open = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+
+document.getElementById('navMenu').addEventListener('click', e => {
+  if (e.target.tagName === 'A') {
+    document.getElementById('navMenu').classList.remove('open');
+    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+  }
+});
+
+renderMenu();
+renderPickles();
+renderAll();
+</script>
+</body>
+</html>
